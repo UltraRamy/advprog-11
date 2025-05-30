@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reflection-app
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: reflection
+  template:
+    metadata:
+      labels:
+        app: reflection
+    spec:
+      containers:
+      - name: reflection
+        image: docker.io/springcommunity/spring-petclinic-rest:3.2.1
+        ports:
+        - containerPort: 9966
